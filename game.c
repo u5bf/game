@@ -1,20 +1,24 @@
+#include <stdlib.h>
 #include <stdio.h>
-#include <string.h>
-#include <math.h>
-int main()
+#include <time.h> 
+int main( )
 {
     int sj,N,s,count=0;
-    scanf("%d%d",&sj,&N);
+    srand( (unsigned)time( NULL ) );
+    sj= rand()%100+1;//sj为1~100之间的随机数
+    scanf("%d",&N);//N表示最多猜测的次数
     while(1)
     {
         scanf("%d",&s);getchar();
         if(s<0) {
-            printf("Game Over");
+            printf("Game Over");//如果在到达N次之前，用户输入了一个负数，也输出"Game Over"，并结束程序
+            count=0;
             break;
         }
         count++;
         if(count>N){
             printf("Game Over");
+            count=0;
             break;
         }
         if(s>sj) printf("Too big\n");
